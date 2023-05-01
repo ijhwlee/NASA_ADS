@@ -7,7 +7,11 @@ if len(sys.argv) > 1 and not sys.argv[1].isnumeric():
   print("Usage: python3 {0} yyyy [file_name]\n       Second argument should be a number(zero for the current year).".format(sys.argv[0]))
   exit(-1)
 
-token="************************************"
+with open('nasa_ads.key', "r") as key_file:
+  lines = key_file.read()
+  keys = lines.split('\n')
+token=keys[0]
+#print("Key value = {0}".format(token))
 current_year = datetime.now().year
 if len(sys.argv) > 1:
   current_year = int(sys.argv[1])
